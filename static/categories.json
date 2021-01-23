@@ -1,0 +1,183 @@
+[
+    {
+        "name": "Акційні",
+        "icon": "sale"
+    },
+    {
+        "name": "Овочі",
+        "novus": "vegetables",
+        "auchan": "vegetables-auchan",
+        "eko": "vegetables-ekomarket",
+        "silpo": "378",
+        "icon": "corn"
+    },
+    {
+        "name": "Фрукти",
+        "novus": "fruits",
+        "auchan": "fruits-auchan",
+        "eko": "fruits-ekomarket",
+        "silpo": "381",
+        "icon": "food-apple"
+    },
+    {
+        "name": "Хліб",
+        "novus": "bread",
+        "auchan": "bread-auchan",
+        "eko": "bread-ekomarket",
+        "silpo": "487",
+        "icon": "baguette"
+    },
+    {
+        "name": "Шоколад",
+        "novus": "block-chocolate",
+        "auchan": "chocolate-bars-auchan",
+        "eko": "chocolate-ekomarket",
+        "silpo": "505",
+        "icon": "page-layout-sidebar-left"
+    },
+    {
+        "name": "Торти та тістечка",
+        "novus": "pastries-and-cakes",
+        "auchan": "cakes-and-pies-auchan",
+        "eko": "pastries-and-cakes-ekomarket",
+        "silpo": "663",
+        "icon": "cake"
+    },
+    {
+        "name": "Печиво",
+        "novus": "cookies",
+        "auchan": "cookies-muffins-brownies-auchan",
+        "eko": "cookies-ekomarket",
+        "silpo": "501",
+        "icon": "cookie"
+    },
+    {
+        "name": "Чіпси",
+        "novus": "chips",
+        "auchan": "chips-auchan",
+        "eko": "chips-ekomarket",
+        "silpo": "313",
+        "icon": "popcorn"
+    },
+    {
+        "name": "Цукерки",
+        "novus": "candies-and-chocolate-bars",
+        "auchan": "candies-auchan",
+        "eko": "candy-ekomarket",
+        "silpo": "503",
+        "icon": "candycane"
+    },
+    {
+        "name": "Морозиво",
+        "novus": "icecream",
+        "auchan": "icecream-auchan",
+        "eko": "icecream-ekomarket",
+        "silpo": "265",
+        "icon": "ice-cream"
+    },
+    {
+        "name": "Риба",
+        "novus": "fresh-fish",
+        "auchan": "fresh-fish-auchan",
+        "eko": "fresh-fish-ekomarket",
+        "silpo": "280",
+        "icon": "fish"
+    },
+    {
+        "name": "М`ясо",
+        "novus": "fresh-meat",
+        "auchan": "fresh-meat-auchan",
+        "eko": "fresh-meat-ekomarket",
+        "silpo": "278",
+        "icon": "food-steak"
+    },
+    {
+        "name": "Ковбаса і сосиски",
+        "novus": "sausages-and-burgers",
+        "auchan": "sausages-and-burgers-auchan",
+        "eko": "sausages-ekomarket",
+        "silpo": "316",
+        "icon": "sausage"
+    },
+    {
+        "name": "Горішки",
+        "novus": "salted-nuts",
+        "auchan": "salted-nuts-auchan",
+        "eko": "salted-nuts-ekomarket",
+        "silpo": "310",
+        "icon": "peanut"
+    },
+    {
+        "name": "Соуси",
+        "novus": "sauce",
+        "auchan": "sauce-auchan",
+        "eko": "sauces-ekomarket",
+        "silpo": "133",
+        "icon": "soy-sauce"
+    },
+    {
+        "name": "Мінералка",
+        "novus": "mineral-water",
+        "auchan": "mineral-water-auchan",
+        "eko": "mineral-water-ekomarket",
+        "silpo": "54",
+        "icon": "water"
+    },
+    {
+        "name": "Солодка вода",
+        "novus": "soft-drinks",
+        "auchan": "soft-drinks-auchan",
+        "eko": "soft-drinks-ekomarket",
+        "silpo": "56",
+        "icon": "bottle-soda-classic"
+    },
+    {
+        "name": "Сік",
+        "novus": "juice",
+        "auchan": "juice-auchan",
+        "eko": "juices-and-nectars-ekomarket",
+        "silpo": "63",
+        "icon": "fruit-grapes"
+    },
+    {
+        "name": "Чай",
+        "novus": "tea",
+        "auchan": "tea-auchan",
+        "eko": "tea-ekomarket",
+        "silpo": "366",
+        "icon": "tea"
+    },
+    {
+        "name": "Кава",
+        "novus": "coffee",
+        "auchan": "coffee-auchan",
+        "eko": "coffee-ekomarket",
+        "silpo": "361",
+        "icon": "coffee"
+    },
+    {
+        "name": "Пиво",
+        "novus": "beer",
+        "auchan": "beer-auchan",
+        "eko": "beer-ekomarket",
+        "silpo": "38",
+        "icon": "glass-mug-variant"
+    },
+    {
+        "name": "Вино",
+        "novus": "wine",
+        "auchan": "wine-auchan",
+        "eko": "wine-ekomarket",
+        "silpo": "37",
+        "icon": "glass-wine"
+    },
+    {
+        "name": "Цигарки",
+        "novus": "cigarettes",
+        "auchan": "cigarettes-auchan",
+        "eko": "cigarettes-ekomarket",
+        "silpo": "472",
+        "icon": "smoking"
+    }
+
+]
