@@ -20,8 +20,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    {src: '~/plugins/buefy.js'},
-    {src: '~/plugins/bottom.js', mode: 'client'}
+    {src: '~/plugins/buefy.js'}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -34,6 +33,7 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/axios',
+    'cookie-universal-nuxt'
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
