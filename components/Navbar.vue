@@ -13,7 +13,7 @@
           <span>ЦІНННННИИИИИИИИ</span>
       </b-navbar-item>
 
-      <b-navbar-item style="margin-right:-10px;margin-left:auto" class="is-hidden-tablet">
+      <b-navbar-item tag="div" style="margin-right:-10px;margin-left:auto" class="is-hidden-tablet">
 
         <b-dropdown v-model="city.data" aria-role="list" :mobile-modal="false" position="is-bottom-left"> 
 
@@ -35,7 +35,7 @@
   </template>
 
   <template slot="end">
-      <b-dropdown style="padding-right:1rem" class="is-hidden-mobile" v-model="city.data" aria-role="list" :mobile-modal="false" position="is-bottom-left"> 
+      <b-dropdown style="padding-right:1rem" class="is-hidden-mobile" v-model="city.data" aria-role="list" position="is-bottom-left"> 
 
           <div class="navbar-item" slot="trigger" role="button" style="cursor:pointer">
             <b-icon icon="map-marker"></b-icon>
@@ -59,12 +59,7 @@
 
 <script>
 export default {
-  props: ['cities', 'city'],
-  data() {
-    return {
-      
-    }
-  }
+  props: ['cities', 'city']
 }
 
 </script>
