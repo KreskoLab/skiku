@@ -1,10 +1,10 @@
 <template>
 
-<div style="background-color:#F2F2F2">
+<div>
    
     <Navbar :cities="cities" :city="city" />
 
-    <div v-if="pending !== true" style="padding-left:10px;padding-right:10px" class="mobile is-hidden-tablet">
+    <div style="padding-left:10px;padding-right:10px" class="mobile is-hidden-tablet">
         
         <nav class="level is-mobile" style="margin-top:25px">
 
@@ -13,20 +13,7 @@
           </div>
 
           <div class="level-right">
-
-            <div class="level-item">
-              <b-dropdown id="mobile_sort" v-model="by" :mobile-modal="false" position="is-bottom-left" :trap-focus="false" aria-role="list">
-                  <b-button style="border-radius:5px!important;width:80.4px!important" size="is-small" slot="trigger">
-                    <span v-if="by == 'price_asc'" class="has-text-weight-medium">Дешевше</span>
-                    <span v-else class="has-text-weight-medium">Дорожче</span>
-                  </b-button>
-                  <b-dropdown-item class="has-text-weight-medium is-size-7" v-if="by !== 'price_asc'" value="price_asc" :focusable="false">Дешевше</b-dropdown-item>
-                  <b-dropdown-item class="has-text-weight-medium is-size-7" v-else value="price_desc" :focusable="false">Дорожче</b-dropdown-item>
-              </b-dropdown>
-            </div>
-
-            <div @click="open()" class="level-item"> <b-icon icon="tune"></b-icon> </div>
-
+            <div class="level-item"> <b-icon icon="tune"></b-icon> </div>
           </div>
 
         </nav>
@@ -34,48 +21,12 @@
         <div class="columns is-mobile is-multiline">
 
           <div class="column is-6" v-for="(good,index) in goods" :key="good.ean">
-            <CardMobile :good="good" :store="storeSelect" />
+            <CardMobile v-if="!$fetchState.pending" :good="good" :store="storeSelect" />
           </div>
 
         </div>
 
         <PaginationMobile :count="count" :page="page" />
-
-        <client-only>
-          <swipeable-bottom-sheet ref="swipeableBottomSheet">
-
-            <div style="margin-top:10px;margin-left:25px;margin-bottom:60px">
-
-              <p class="is-size-5 has-text-success has-text-weight-medium"> Магазин </p>
-
-              <div class="field" style="display:grid;margin-left:5px;margin-top:8px">
-
-                <div v-for="(store,index) in stores" :key="store.name">
-                <b-radio v-if="store[city.data]" v-model="storeSelect" :native-value="store" type="is-success" style="padding-bottom:10px">
-
-                    <figure style="position:absolute;margin-left:27px;width:20px!important;height:20px!important">
-                      <img :src="store.img">
-                    </figure>
-
-                    <span class="has-text-weight-medium" style="margin-left:32px;white-space:pre">{{store.name}}</span>
-
-                </b-radio>
-                </div>
-              </div>
-
-              <p style="margin-bottom:10px" class="is-size-5 has-text-success has-text-weight-medium"> Товари </p>
-
-              <b-radio v-model="categoriesSelect" :native-value="category" type="is-success" style="display:flex;padding-bottom:10px;margin-left:5px" v-for="(category,index) in categories" :key="category.name">
-
-                <b-icon :icon="category.icon" style="margin-left:5px;margin-right:3px"> </b-icon>
-
-                <span class="has-text-weight-medium" style="white-space:pre">{{category.name}}</span>
-
-              </b-radio>
-
-            </div>
-          </swipeable-bottom-sheet>
-        </client-only>
 
     </div>
 
@@ -85,18 +36,15 @@
 
         <div style="padding: 15px 16px 16px 16px" id="Stores"> 
 
-           <p class="is-size-5 has-text-success has-text-weight-medium"> Магазин </p>
+           <p class="is-size-5 has-text-success has-text-weight-medium">Магазин</p>
 
             <div class="field" style="display:table-caption;margin-left:5px;margin-top:8px">
 
               <b-radio v-if="store[city.data]" v-model="storeSelect" :native-value="store" type="is-success" style="padding-bottom:10px" v-for="(store,index) in stores" :key="store.name">
-
                   <figure style="margin-left:10px;margin-right:5px" class="image is-16x16">
                     <img :src="store.img">
                   </figure>
-
                   <span class="has-text-weight-medium" style="white-space:pre">{{store.name}}</span>
-
               </b-radio>
 
             </div>
@@ -105,11 +53,11 @@
 
         <div style="padding: 0 16px 16px 16px;margin-top:-10px">
 
-           <p class="is-size-5 has-text-success has-text-weight-medium"> Товари </p>
+           <p class="is-size-5 has-text-success has-text-weight-medium">Товари</p>
 
             <div style="margin-top:8px;margin-left:5px;display:table-caption">
 
-              <b-radio v-model="categoriesSelect" :native-value="category" type="is-success" style="display:flex;padding-bottom:10px" v-for="(category,index) in categories" :key="category.name">
+              <b-radio v-model="categorySelect" :native-value="category" type="is-success" style="display:flex;padding-bottom:10px" v-for="(category,index) in categories" :key="category.name">
 
                 <b-icon :icon="category.icon" style="margin-left:7px;margin-right:5px"> </b-icon>
 
@@ -123,31 +71,7 @@
 
     </div>
 
-    <div class="main-content" style="margin-top:10px" v-if="pending == true">
-
-      <b-skeleton width="10%"></b-skeleton>
-      
-      <div class="columns is-multiline" style="margin-top:10px">
-
-        <div class="column is-3" v-for="n in 8">
-          <div class="card">
-            <div class="card-image">
-              <b-skeleton width="250" height="255"></b-skeleton>
-            </div>
-            <div style="margin-left:-10px" class="card-content">
-              <div class="content" style="margin-top:-10px">
-                <b-skeleton width="40%"></b-skeleton>
-                <b-skeleton width="80%"></b-skeleton>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      
-    </div>
-
-    <div class="main-content" v-else>
+    <div class="main-content">
 
       <nav class="level" style="margin-top:15px">
 
@@ -164,7 +88,7 @@
 
       <div class="columns is-multiline" style="margin-top:-10px">
         <div class="column is-3" v-for="(good,index) in goods" :key="good.ean">
-          <Card :good="good" :store="storeSelect" />
+          <Card v-if="!$fetchState.pending" :good="good" :store="storeSelect" />
         </div>
       </div>
 
@@ -182,118 +106,67 @@
 import categoriesJson from '~/static/categories.json'
 import storesJson from '~/static/stores.json'
 
-
 export default {
-
-  mounted(){
-    if(process.browser){
-      
-      if (localStorage.getItem("city") == null)
-      {
-        localStorage.setItem("city", "Київ")
-      }
-      this.city.data = localStorage.getItem("city")
+  
+  async fetch(){
+    
+    if (this.$cookies.get("city") == null){
+      this.$cookies.set("city", "Київ")
     }
+    this.city.data = this.$cookies.get("city")
 
+    var storeID = this.storeSelect[this.city.data] // Город
+    var categoryID = this.categorySelect[this.storeSelect.code] // Категория
+
+    if (this.storeSelect.name == 'Сільпо'){ 
+      await this.$axios.$get(`https://api.skiku.online/silpo/store/${storeID}/category/${categoryID}/page/${this.page}/sort/${this.by}`)
+        .then((res) => {
+          this.goods = res.goods
+          this.count = res.count
+      })
+    }
+    else{
+      await this.$axios.$get(`https://api.skiku.online/store/${storeID}/category/${categoryID}/page/${this.page}/sort/${this.by}`)
+        .then((res) => {
+          this.goods = res.goods
+          this.count = res.count
+      })
+    }
   },
   watch: {
-    'city.data'(val) {
-      this.pending = true
-      this.categoryGoods(this.storeSelect,this.categoriesSelect)
-
-      if(process.browser){
-       return localStorage.setItem("city", val)
-      }
-      
-    },
-    by() {
-      this.pending = true
-      this.categoryGoods(this.storeSelect,this.categoriesSelect)
-    },
-    categoriesSelect(category) {
-      this.$store.commit('updateCategory', category)
-      this.pending = true
+    'city.data'(val){
+      this.$cookies.set("city", val)
       this.$router.push('/explore/1')
-      this.categoryGoods(this.storeSelect,category)
+      if ( !Object.keys(this.storeSelect).includes(this.city.data) ){
+        var newStore = this.stores.find(item => Object.keys(item).includes(this.city.data) ) 
+        this.$store.commit('updateStore', newStore)
+        this.storeSelect = newStore
+      }
+      this.$fetch()
     },
-    storeSelect(store) {
+    storeSelect(store){
       this.$store.commit('updateStore', store)
-      this.pending = true
       this.$router.push('/explore/1')
-      this.categoryGoods(store,this.categoriesSelect)
-    }
-  },
-  methods: {
-    open() {
-      this.$refs.swipeableBottomSheet.setState("open")
+      this.$fetch()
     },
-    categoryGoods(store,category){
-
-      var a = category[this.$store.state.store.code] // Категория
-      var b = store[this.city.data] // Город
-
-      if (category.name !== 'Акційні' && store.name !== 'Сільпо')
-      {
-        this.$axios.$get(`https://api.skiku.online/store/${b}/category/${a}/page/${this.page}/sort/${this.by}`)
-         .then((res) => {
-          this.goods = res.goods
-          this.count = res.count
-          this.categoriesSelect = category
-          this.pending = false
-        })
-      }
-      else if (category.name !== 'Акційні' && store.name == 'Сільпо')
-      { 
-        var sort
-        if (this.by == 'price_asc') {sort = 'price-asc'}
-        else {sort = 'price-desc'}
-
-        this.$axios.$get(`https://api.skiku.online/silpo/store/${b}/category/${a}/page/${this.page}/sort/${sort}`)
-         .then((res) => {
-          this.goods = res.goods
-          this.count = res.count
-          this.categoriesSelect = category
-          this.pending = false
-        })
-      }
-      else if (category.name == 'Акційні' && store.name !== 'Сільпо')
-      { 
-        this.$axios.$get(`https://api.skiku.online/promo/store/${b}/page/${this.page}/sort/${this.by}`)
-         .then((res) => {
-          this.goods = res.goods
-          this.count = res.count
-          this.pending = false
-        })
-      }
-      else
-      {
-        var sort
-        if (this.by == 'price_asc') {sort = 'price-asc'}
-        else {sort = 'price-desc'}
-
-        this.$axios.$get(`https://api.skiku.online/silpoPromo/store/${b}/page/${this.page}/sort/${sort}`)
-         .then((res) => {
-          this.goods = res.goods
-          this.count = res.count
-          this.pending = false
-        })
-      }
+    categorySelect(category){
+      this.$store.commit('updateCategory', category)
+      this.$router.push('/explore/1')
+      this.$fetch()
     }
   },
   data() {
     return{
       goods: [],
       cities: ['Київ', 'Львів', 'Дніпро', 'Одеса', 'Харків'],
-      pending: true,
-      count: null,
-      by: 'price_asc',
-      active: false,
       city: {
         data: null
       },
+      count: null,
+      by: 'price_asc',
       page: Number(this.$route.params.id),
       storeSelect: this.$store.state.store,
-      categoriesSelect: this.$store.state.category,
+      categorySelect: this.$store.state.category,
       stores: storesJson,
       categories: categoriesJson
     }
