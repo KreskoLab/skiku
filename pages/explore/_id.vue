@@ -80,8 +80,8 @@
         </div>
 
         <div class="level-right">
-          <p @click="by = 'price_asc'" :class="{'has-text-success': by == 'price_asc' || by == 'price-asc'}" style="cursor:pointer" class="level-item has-text-weight-medium">Дешевші</p>
-          <p @click="by = 'price_desc'" :class="{'has-text-success': by == 'price_desc' || by == 'price-desc'}" style="cursor:pointer" class="level-item has-text-weight-medium">Дорожчі</p>
+          <p @click="$store.commit('updateSort', 'price_asc')" :class="{'has-text-success': sort == 'price_asc' || sort == 'price-asc'}" style="cursor:pointer" class="level-item has-text-weight-medium">Дешевші</p>
+          <p @click="$store.commit('updateSort', 'price_desc')" :class="{'has-text-success': sort == 'price_desc' || sort == 'price-desc'}" style="cursor:pointer" class="level-item has-text-weight-medium">Дорожчі</p>
         </div>
 
       </nav>
@@ -109,34 +109,39 @@ import storesJson from '~/static/stores.json'
 export default {
   
   async fetch(){
-    
-    if (this.$cookies.get("city") == null){
-      this.$cookies.set("city", "Київ")
-    }
-    this.city.data = this.$cookies.get("city")
 
     var storeID = this.storeSelect[this.city.data] // Город
     var categoryID = this.categorySelect[this.storeSelect.code] // Категория
 
     if (this.storeSelect.name == 'Сільпо'){ 
-      await this.$axios.$get(`https://api.skiku.online/silpo/store/${storeID}/category/${categoryID}/page/${this.page}/sort/${this.by}`)
+      await this.$axios.$get(`https://api.skiku.online/silpo/store/${storeID}/category/${categoryID}/page/${this.page}/sort/${this.sort}`)
         .then((res) => {
           this.goods = res.goods
           this.count = res.count
       })
     }
     else{
-      await this.$axios.$get(`https://api.skiku.online/store/${storeID}/category/${categoryID}/page/${this.page}/sort/${this.by}`)
+      await this.$axios.$get(`https://api.skiku.online/store/${storeID}/category/${categoryID}/page/${this.page}/sort/${this.sort}`)
         .then((res) => {
           this.goods = res.goods
           this.count = res.count
       })
     }
   },
+  mounted(){
+    if (this.$cookies.get("city") == null){
+      this.$cookies.set("city", "Київ")
+      this.city.data = this.$cookies.get("city")
+    }
+  },
+  computed: {
+   sort(){
+     return this.$store.state.sort
+   }
+  },
   watch: {
     'city.data'(val){
       this.$cookies.set("city", val)
-      this.$router.push('/explore/1')
       if ( !Object.keys(this.storeSelect).includes(this.city.data) ){
         var newStore = this.stores.find(item => Object.keys(item).includes(this.city.data) ) 
         this.$store.commit('updateStore', newStore)
@@ -144,8 +149,12 @@ export default {
       }
       this.$fetch()
     },
+    sort(){
+      this.$fetch()
+    },
     storeSelect(store){
       this.$store.commit('updateStore', store)
+      this.$store.commit('updateSort', this.sort)
       this.$router.push('/explore/1')
       this.$fetch()
     },
@@ -160,10 +169,9 @@ export default {
       goods: [],
       cities: ['Київ', 'Львів', 'Дніпро', 'Одеса', 'Харків'],
       city: {
-        data: null
+        data: 'Київ'
       },
       count: null,
-      by: 'price_asc',
       page: Number(this.$route.params.id),
       storeSelect: this.$store.state.store,
       categorySelect: this.$store.state.category,
