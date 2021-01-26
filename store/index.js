@@ -16,7 +16,8 @@
         auchan: "fruits-auchan",
         eko: "fruits-ekomarket",
         silpo: "381"
-    }
+    },
+    sort: 'price_asc'
   })
   
   export const mutations = {
@@ -25,6 +26,25 @@
     },
     updateCategory(state, newCategory) {
         state.category = newCategory
+    },
+    updateSort(state, newSort) {
+      if(state.store.name == 'Сільпо'){
+        if(newSort == 'price_asc'){
+          newSort = 'price-asc'
+        }
+        else if(newSort == 'price_desc'){
+          newSort = 'price-desc'
+        }
+      }
+      else{
+        if(newSort == 'price-asc'){
+          newSort = 'price_asc'
+        }
+        else if(newSort == 'price-desc'){
+          newSort = 'price_desc'
+        }
+      }
+      state.sort = newSort
     }
   }
 
@@ -34,5 +54,8 @@
     },
     getCategory: (state) => {
       return state.category
+    },
+    getSort: (state) => {
+      return state.sort
     }
   }
