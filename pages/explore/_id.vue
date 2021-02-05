@@ -20,7 +20,7 @@
 
         <div class="columns is-mobile is-multiline">
 
-          <div class="column is-6" v-for="(good,index) in goods" :key="good.ean">
+          <div class="column is-6 p-2" v-for="(good,index) in goods" :key="good.ean">
             <CardMobile v-if="!$fetchState.pending" :good="good" :store="storeSelect" />
           </div>
 
