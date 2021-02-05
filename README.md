@@ -1,1 +1,2 @@
 # skiku
+Nuxt + Buefy = skiku
