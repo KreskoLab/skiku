@@ -4,7 +4,7 @@
    
     <Navbar :cities="cities" :city="city" />
 
-    <div class="mobile is-hidden-tablet px-2">
+    <div v-if="!$fetchState.pending" class="mobile is-hidden-tablet px-2">
         
         <nav class="level is-mobile" style="margin-top:25px">
 
@@ -21,7 +21,7 @@
         <div class="columns is-multiline">
 
           <div class="column px-4" v-for="(good,index) in goods" :key="good.ean">
-            <CardMobile v-if="!$fetchState.pending" :good="good" :store="storeSelect" />
+            <CardMobile :good="good" :store="storeSelect" />
           </div>
 
         </div>
@@ -71,7 +71,7 @@
 
     </div>
 
-    <div class="main-content">
+    <div v-if="!$fetchState.pending" class="main-content">
 
       <nav class="level" style="margin-top:15px">
 
@@ -88,7 +88,7 @@
 
       <div class="columns is-multiline" style="margin-top:-10px">
         <div class="column is-3" v-for="(good,index) in goods" :key="good.ean">
-          <Card v-if="!$fetchState.pending" :good="good" :store="storeSelect" />
+          <Card :good="good" :store="storeSelect" />
         </div>
       </div>
 
