@@ -184,6 +184,7 @@ export default {
 </script>
 
 <style>
+body {overflow-x: hidden}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#f1f1f1}::-webkit-scrollbar-thumb{background:#888}
 .dropdown-content{font-size:.875rem;padding-bottom:.5rem;padding-top:.5rem;border:1px solid #dbdbdb;border-radius:6px}
 .dropdown-menu{min-width:110px!important;transition-duration:86ms;transition-property:opacity,transform}
