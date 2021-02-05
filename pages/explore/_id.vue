@@ -4,7 +4,7 @@
    
     <Navbar :cities="cities" :city="city" />
 
-    <div style="padding-left:10px;padding-right:10px" class="mobile is-hidden-tablet">
+    <div class="mobile is-hidden-tablet px-2">
         
         <nav class="level is-mobile" style="margin-top:25px">
 
@@ -184,6 +184,12 @@ export default {
 </script>
 
 <style>
-body { overflow-x: hidden; }
-.dropdown-content{font-size:.875rem;padding-bottom:.5rem;padding-top:.5rem;border:1px solid #dbdbdb;border-radius:6px}.dropdown-menu{min-width:110px!important;transition-duration:86ms;transition-property:opacity,transform}.dropdown-item{padding:.375rem 1rem;padding-right:3rem;white-space:nowrap}.sidebar{background-color:#F2F2F2;border-width:0 1px 0 0;position:fixed;top:50px;left:0;bottom:0;width:250px;overflow:auto}.main-content{max-width:100%;padding:16px 32px;margin:0 auto;display:block}span.icon.is-left{margin:16px}span.control-label{display:contents}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#f1f1f1}::-webkit-scrollbar-thumb{background:#888}.card[data-state="open"][data-v-5d6b6420]{top:100px!important}#mobile_sort .dropdown-content{width:83px;border-radius:0!important;border-bottom-left-radius:6px!important;border-bottom-right-radius:6px!important}#mobile_sort .dropdown-menu{right:unset!important;margin-left:-1px;margin-top:-7px}#mobile_sort .dropdown-item{padding:0 .8rem!important}#mobile_sort .button:focus,.button.is-focused{border-color:transparent!important;color:#363636}#nav{padding:.25rem;background-color:hsla(0,0%,100%,.75);backdrop-filter:blur(12px)}.card{height:100%}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#f1f1f1}::-webkit-scrollbar-thumb{background:#888}
+.dropdown-content{font-size:.875rem;padding-bottom:.5rem;padding-top:.5rem;border:1px solid #dbdbdb;border-radius:6px}
+.dropdown-menu{min-width:110px!important;transition-duration:86ms;transition-property:opacity,transform}
+.dropdown-item{padding:.375rem 1rem;padding-right:3rem;white-space:nowrap}
+.sidebar{background-color:#F2F2F2;border-width:0 1px 0 0;position:fixed;top:50px;left:0;bottom:0;width:250px;overflow:auto}
+.main-content{max-width:100%;padding:16px 32px;margin:0 auto;display:block}
+span.icon.is-left{margin:16px}span.control-label{display:contents}
+.card{height:100%}
 </style>
