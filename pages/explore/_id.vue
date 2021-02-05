@@ -144,7 +144,6 @@ export default {
       this.$cookies.set("city", val)
       if ( !Object.keys(this.storeSelect).includes(this.city.data) ){
         var newStore = this.stores.find(item => Object.keys(item).includes(this.city.data) ) 
-        this.$store.commit('updateStore', newStore)
         this.storeSelect = newStore
       }
       this.$fetch()
