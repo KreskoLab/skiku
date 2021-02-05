@@ -9,7 +9,7 @@
       </figure>
     </div>
 
-    <div style="margin-left:-10px;margin-top:-10px" class="card-content">
+    <div class="card-content">
       <div class="media">
          
         <div class="media-left" v-if="store.name == 'Сільпо' ">

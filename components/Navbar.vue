@@ -1,7 +1,7 @@
 <template>
 
 <div>
-  <b-navbar :mobile-burger="false" fixed-top id="nav">
+  <b-navbar class="p-1" :mobile-burger="false" fixed-top id="nav">
         
   <template slot="brand">
 
@@ -63,3 +63,10 @@ export default {
 }
 
 </script>
+
+<style>
+#nav{
+  background-color:hsla(0,0%,100%,.75);
+  backdrop-filter:blur(12px)
+}
+</style>
