@@ -26,7 +26,7 @@
 
         </div>
 
-        <PaginationMobile :count="count" :page="page" />
+        <PaginationMobile class="mb-1" :count="count" :page="page" />
 
     </div>
 
