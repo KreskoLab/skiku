@@ -1,9 +1,5 @@
 [
     {
-        "name": "Акційні",
-        "icon": "sale"
-    },
-    {
         "name": "Овочі",
         "novus": "vegetables",
         "auchan": "vegetables-auchan",
