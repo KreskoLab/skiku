@@ -3,9 +3,9 @@
   <div class="card">
 
     <div class="card-image has-text-centered">
-      <figure class="image is-128x128 is-inline-block">
-        <img :src="good.img.s350x350" v-if="store.name !== 'Сільпо' ">
-        <img :src="good.mainImage" v-else>
+      <figure class="image is-128x128 is-inline-block" style="padding-top:unset">
+        <nuxt-picture placeholder :src="good.img.s350x350" v-if="store.name !== 'Сільпо' " />
+        <nuxt-picture placeholder :src="good.mainImage" v-else />
       </figure>
     </div>
 
