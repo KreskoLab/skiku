@@ -1,6 +1,18 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
+@font-face {
+    font-family: "e-Ukraine";
+    src: local("e-Ukraine"),
+     url(~assets/e-Ukraine/e-Ukraine-Regular.woff2) format("woff2");
+}
+
+$family-primary: "e-Ukraine";
+
+//Card
+$card-radius: 0.45rem;
+
+
 // Set your colors
 $primary: #94C7A6;
 $primary-light: findLightColor($primary);
