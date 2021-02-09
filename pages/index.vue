@@ -5,23 +5,25 @@
   <div class="hero-body">
     <div class="container has-text-centered">
 
-      <p class="is-size-1 has-text-weight-bold is-hidden-mobile" style="margin-top:-100px;color:#212121" >
+      <p class="is-size-1 has-text-weight-bold is-hidden-mobile" style="margin-top:-100px;color:#333333" >
         Досліджуйте ціни у
       </p>
 
-      <p class="is-size-2 has-text-weight-bold is-hidden-tablet" style="margin-top:-100px;color:#212121" >
+      <p class="is-size-2 has-text-weight-bold is-hidden-tablet" style="margin-top:-100px;color:#333333" >
         Досліджуйте ціни у
       </p>
 
       <transition name="bounce" appear > 
 
-        <div style="margin-top:30px" class="has-image-centered" :key="stores[0]">
+        <div class="mt-5 has-image-centered" :key="stores[0]">
           <img width="200" :src="stores[0].img">
         </div>
 
       </transition>
 
-      <b-button tag="router-link" to="/explore/1" style="margin-top:50px" type="is-success" size="is-medium">Перейти</b-button>
+      <b-button class="mt-6" rounded tag="nuxt-link" to="/explore/1" type="is-success" size="is-medium">
+        Перейти
+      </b-button>
 
     </div>
   </div>
