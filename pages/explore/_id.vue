@@ -113,25 +113,45 @@ export default {
     var storeID = this.storeSelect[this.city.data] // Город
     var categoryID = this.categorySelect[this.storeSelect.code] // Категория
 
+    var end = 30 * this.page
+    var start = end - 30 + 1
+
     if (this.storeSelect.name == 'Сільпо'){ 
-      await this.$axios.$get(`https://api.skiku.online/silpo/store/${storeID}/category/${categoryID}/page/${this.page}/sort/${this.sort}`)
-        .then((res) => {
-          this.goods = res.goods
-          this.count = res.count
+
+      await this.$axios.$post('https://api.catalog.ecom.silpo.ua/api/2.0/exec/EcomCatalogGlobal', {
+        method: "GetSimpleCatalogItems",
+        data: {
+          "categoryId": categoryID,
+          "filialId": storeID,
+          "From": start,
+          "To": end,
+          "sortBy": this.sort
+        }
       })
+      .then( (res) => {
+        this.goods = res.items
+        this.count = res.itemsCount
+      })
+
     }
     else{
-      await this.$axios.$get(`https://api.skiku.online/store/${storeID}/category/${categoryID}/page/${this.page}/sort/${this.sort}`)
-        .then((res) => {
-          this.goods = res.goods
-          this.count = res.count
+
+      await this.$axios.$get(`https://stores-api.zakaz.ua/stores/${storeID}/categories/${categoryID}/products/?page=${this.page}&sort=${this.sort}`, {
+        headers: {
+          'Accept-Language': 'uk'
+        }
+      })
+      .then((res) => {
+        this.goods = res.results
+        this.count = res.count
       })
     }
   },
   mounted(){
     if (this.$cookies.get("city") == null){
-      this.$cookies.set("city", "Київ")
-      this.city.data = this.$cookies.get("city")
+      
+        this.$cookies.set("city", "Київ")
+        this.city.data = this.$cookies.get("city")
     }
   },
   computed: {
