@@ -118,7 +118,6 @@ export default {
 
     if (this.storeSelect.name == 'Сільпо'){ 
       await this.$axios.$post('silpo/api/2.0/exec/EcomCatalogGlobal', {
-      //await this.$axios.$post('https://api.catalog.ecom.silpo.ua/api/2.0/exec/EcomCatalogGlobal', {
         method: "GetSimpleCatalogItems",
         data: {
           "categoryId": categoryID,
@@ -137,7 +136,6 @@ export default {
     else{
 
       await this.$axios.$get(`zakaz/stores/${storeID}/categories/${categoryID}/products/?page=${this.page}&sort=${this.sort}`, {
-      //await this.$axios.$get(`https://stores-api.zakaz.ua/stores/${storeID}/categories/${categoryID}/products/?page=${this.page}&sort=${this.sort}`, {
         headers: {
           'Accept-Language': 'uk'
         }
@@ -148,10 +146,9 @@ export default {
       })
     }
   },
-  mounted(){
-    if (this.$cookies.get("city") == null){
-      
-        this.$cookies.set("city", "Київ")
+  created(){
+    if ( !this.$cookies.get("city") ){
+        this.$cookies.set("city", this.cities[0])
         this.city.data = this.$cookies.get("city")
     }
   },
