@@ -2,14 +2,18 @@
 
   <div class="card">
 
-    <div class="card-image">
-      <figure class="image is-1by1 pt-0">
+    <div class="card-image has-text-centered">
+      <figure class="image is-1by1 pt-0 is-hidden-mobile">
+        <nuxt-picture placeholder :src="good.img.s350x350" v-if="store.name !== 'Сільпо' " />
+        <nuxt-picture placeholder :src="good.mainImage" v-else />
+      </figure>
+      <figure class="image is-128x128 is-inline-block pt-0 is-hidden-tablet">
         <nuxt-picture placeholder :src="good.img.s350x350" v-if="store.name !== 'Сільпо' " />
         <nuxt-picture placeholder :src="good.mainImage" v-else />
       </figure>
     </div>
 
-    <div style="margin-left:-10px" class="card-content">
+    <div class="card-content">
 
       <div class="media">
         <div class="media-content has-text-centered">
