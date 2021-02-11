@@ -34,8 +34,18 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     'cookie-universal-nuxt'
   ],
+
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/zakaz/': { target: 'https://stores-api.zakaz.ua/', pathRewrite: {'^/zakaz/': ''}, changeOrigin: true },
+    '/silpo/': { target: 'https://api.catalog.ecom.silpo.ua/', pathRewrite: {'^/silpo/': ''}, changeOrigin: true }
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
