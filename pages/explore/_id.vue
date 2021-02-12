@@ -70,9 +70,9 @@
 
       </div>
 
-      <div class="ml-6 mr-5" v-if="!$fetchState.pending">
+      <div class="column ml-6 mr-5 mt-1" v-if="!$fetchState.pending">
 
-        <nav class="level mt-6">
+        <nav class="level mt-5">
 
           <div class="level-left">
             <p class="level-item has-text-weight-medium">{{count}} товарів</p>
