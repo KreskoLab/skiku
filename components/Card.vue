@@ -3,11 +3,7 @@
   <div class="card">
 
     <div class="card-image has-text-centered">
-      <figure class="image is-1by1 pt-0 is-hidden-mobile">
-        <nuxt-picture placeholder :src="good.img.s350x350" v-if="store.name !== 'Сільпо' " />
-        <nuxt-picture placeholder :src="good.mainImage" v-else />
-      </figure>
-      <figure class="image is-128x128 is-inline-block pt-0 is-hidden-tablet">
+      <figure class="image is-5by4 pt-0">
         <nuxt-picture placeholder :src="good.img.s350x350" v-if="store.name !== 'Сільпо' " />
         <nuxt-picture placeholder :src="good.mainImage" v-else />
       </figure>
@@ -68,7 +64,5 @@ export default {
 </script>
 
 <style>
-#name{
-  
-}
+
 </style>
