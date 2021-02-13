@@ -1,17 +1,16 @@
 <template>
   <div>
-    
     <nuxt />
-    
   </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-     
-    }
-  }
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
 }
-</script>
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+</style>
