@@ -3,7 +3,7 @@
    
     <Navbar :cities="cities" :city="city" />
 
-    <div v-if="!$fetchState.pending" class="is-hidden-desktop px-2">
+    <div v-if="!$fetchState.pending" class="is-hidden-desktop px-4">
         
         <nav class="level is-mobile mt-5 mx-2">
 
