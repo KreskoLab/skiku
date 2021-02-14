@@ -110,6 +110,8 @@ $input-focus-border-color: transparent;
 @import "~bulma/sass/components/card.sass";
 @import "~bulma/sass/components/pagination.sass";
 @import "~bulma/sass/components/level.sass";
+@import "~bulma/sass/components/modal.sass";
+@import "~bulma/sass/components/media.sass";
 
 //Buefy
 @import "~buefy/src/scss/utils/_all";
@@ -118,3 +120,4 @@ $input-focus-border-color: transparent;
 @import "~buefy/src/scss/components/_pagination";
 @import "~buefy/src/scss/components/_tag";
 @import "~buefy/src/scss/components/_radio";
+@import "~buefy/src/scss/components/_modal";
