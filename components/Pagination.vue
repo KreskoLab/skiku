@@ -11,11 +11,11 @@
     </b-pagination-button>
 
     <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="nuxt-link" :to="`/explore/${props.page.number}`">
-      <b-icon icon="chevron-left"></b-icon>
+      <-
     </b-pagination-button>
 
     <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="nuxt-link" :to="`/explore/${props.page.number}`">
-      <b-icon icon="chevron-right"></b-icon>
+      ->
     </b-pagination-button>            
 </b-pagination>   
 </template>

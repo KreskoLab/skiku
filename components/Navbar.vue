@@ -5,11 +5,11 @@
         
   <template slot="brand">
 
-      <b-navbar-item style="padding-left:1rem" class="is-hidden-mobile" tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item class="is-hidden-mobile" tag="nuxt-link" :to="{ path: '/' }">
           <span>ЦІНННННИИИИИИИИ</span>
       </b-navbar-item>
 
-      <b-navbar-item style="margin-left:-5px" class="is-hidden-tablet" tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item class="is-hidden-tablet ml-2" tag="nuxt-link" :to="{ path: '/' }">
           <span>ЦІНННННИИИИИИИИ</span>
       </b-navbar-item>
 
@@ -17,10 +17,9 @@
 
         <b-dropdown v-model="city.data" aria-role="list" :mobile-modal="false" position="is-bottom-left"> 
 
-          <div class="navbar-item" slot="trigger" role="button" style="cursor:pointer">
-            <b-icon icon="map-marker"></b-icon>
-            <span v-if="city.data == null">Місто</span>
-            <span v-else>{{city.data}}</span>
+          <div class="navbar-item" slot="trigger" role="button">
+            <span v-if="city.data == null"><span class="is-size-5">🏡</span> Місто</span>
+            <span v-else><span class="is-size-5">🏡</span> {{city.data}}</span>
           </div>
 
           <b-dropdown-item :focusable="false" :value="city2" v-for="city2 in cities" :key="city2">
@@ -38,9 +37,8 @@
       <b-dropdown style="padding-right:1rem" class="is-hidden-mobile" v-model="city.data" aria-role="list" position="is-bottom-left"> 
 
           <div class="navbar-item" slot="trigger" role="button" style="cursor:pointer">
-            <b-icon icon="map-marker"></b-icon>
-            <span v-if="city.data == null">Місто</span>
-            <span v-else>{{city.data}}</span>
+            <span v-if="city.data == null"><span class="is-size-5">🏡</span> Місто</span>
+            <span v-else><span class="is-size-5">🏡</span> {{city.data}}</span>
           </div>
 
           <b-dropdown-item :focusable="false" :value="city2" v-for="city2 in cities" :key="city2">
