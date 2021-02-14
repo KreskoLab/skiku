@@ -1,5 +1,5 @@
-// Import Bulma's core
-@import "~bulma/sass/utilities/_all";
+// Import Bulma and Buefy styles
+@import "~bulma/sass/utilities/_all.sass";
 
 @font-face {
     font-family: "e-Ukraine";
@@ -11,7 +11,6 @@ $family-primary: "e-Ukraine";
 
 //Card
 $card-radius: 0.45rem;
-
 
 // Set your colors
 $primary: #94C7A6;
@@ -90,11 +89,32 @@ $link-focus-border: $primary;
 $body-background-color: #F2F2F2;
 
 $dropdown-item-active-background-color: #EFFAF3;
-$skeleton-background: #EFFAF3;
 $pagination-current-background-color: #EFFAF3;
 $input-hover-border-color:#EFFAF3;
 $input-focus-border-color: transparent;
 
-// Import Bulma and Buefy styles
-@import "~bulma";
-@import "~buefy/src/scss/buefy";
+//Bulma
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/grid/columns.sass";
+@import "~bulma/sass/helpers/_all.sass";
+@import "~bulma/sass/layout/hero.sass";
+@import "~bulma/sass/layout/section.sass";
+@import "~bulma/sass/elements/button.sass";
+@import "~bulma/sass/elements/image.sass";
+@import "~bulma/sass/elements/tag.sass";
+@import "~bulma/sass/form/shared.sass";
+@import "~bulma/sass/form/input-textarea.sass";
+@import "~bulma/sass/form/checkbox-radio.sass";
+@import "~bulma/sass/components/navbar.sass";
+@import "~bulma/sass/components/dropdown.sass";
+@import "~bulma/sass/components/card.sass";
+@import "~bulma/sass/components/pagination.sass";
+@import "~bulma/sass/components/level.sass";
+
+//Buefy
+@import "~buefy/src/scss/utils/_all";
+@import "~buefy/src/scss/components/_navbar";
+@import "~buefy/src/scss/components/_dropdown";
+@import "~buefy/src/scss/components/_pagination";
+@import "~buefy/src/scss/components/_tag";
+@import "~buefy/src/scss/components/_radio";
