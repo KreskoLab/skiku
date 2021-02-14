@@ -4,8 +4,8 @@
 
     <div class="card-image has-text-centered">
       <figure class="image is-5by4 pt-0">
-        <nuxt-picture placeholder :src="good.img.s350x350" v-if="store.name !== 'Сільпо' " />
-        <nuxt-picture placeholder :src="good.mainImage" v-else />
+        <nuxt-picture placeholder :src="good.mainImage" v-if="store.name == 'Сільпо'" />
+        <nuxt-picture placeholder :src="good.img" v-else />
       </figure>
     </div>
 
