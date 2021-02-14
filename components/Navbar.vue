@@ -5,15 +5,15 @@
         
   <template slot="brand">
 
-      <b-navbar-item class="is-hidden-mobile" tag="nuxt-link" :to="{ path: '/' }">
+      <b-navbar-item class="is-hidden-touch" tag="nuxt-link" :to="{ path: '/' }">
           <span>ЦІНННННИИИИИИИИ</span>
       </b-navbar-item>
 
-      <b-navbar-item class="is-hidden-tablet ml-2" tag="nuxt-link" :to="{ path: '/' }">
+      <b-navbar-item class="is-hidden-desktop ml-2" tag="nuxt-link" :to="{ path: '/' }">
           <span>ЦІНННННИИИИИИИИ</span>
       </b-navbar-item>
 
-      <b-navbar-item tag="div" style="margin-right:-10px;margin-left:auto" class="is-hidden-tablet">
+      <b-navbar-item tag="div" style="margin-right:-10px;margin-left:auto" class="is-hidden-desktop">
 
         <b-dropdown v-model="city.data" aria-role="list" :mobile-modal="false" position="is-bottom-left"> 
 
@@ -34,7 +34,7 @@
   </template>
 
   <template slot="end">
-      <b-dropdown style="padding-right:1rem" class="is-hidden-mobile" v-model="city.data" aria-role="list" position="is-bottom-left"> 
+      <b-dropdown class="is-hidden-touch pr-2" v-model="city.data" aria-role="list" position="is-bottom-left"> 
 
           <div class="navbar-item" slot="trigger" role="button" style="cursor:pointer">
             <span v-if="city.data == null"><span class="is-size-5">🏡</span> Місто</span>
