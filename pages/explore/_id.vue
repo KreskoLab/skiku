@@ -58,7 +58,7 @@
 
                 <b-radio v-model="categorySelect" :native-value="category" class="mb-2 is-flex" type="is-success" v-for="(category,i) in categories" :key="category.i">
 
-                  <b-icon :icon="category.icon" class="mx-2"> </b-icon>
+                  <span class="mx-2">{{category.icon}}</span>
 
                   <span class="has-text-weight-medium" style="white-space:pre">{{category.name}}</span>
 
