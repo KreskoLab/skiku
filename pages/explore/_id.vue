@@ -124,7 +124,12 @@ export default {
         }
       })
       .then( (res) => {
-        this.goods = res.items
+        this.goods = res.items.map( item => ({
+          name: item.name,
+          mainImage: item.mainImage,
+          price: item.price,
+          priceStopAfter: item.priceStopAfter
+        }))
         this.count = res.itemsCount
       })
 
@@ -137,7 +142,15 @@ export default {
         }
       })
       .then((res) => {
-        this.goods = res.results
+        this.goods = res.results.map( item => ({
+          title: item.title,
+          img: item.img.s350x350,
+          price: item.price,
+          discount: {
+            status: item.discount.status,
+            due_date: item.discount.due_date
+          } 
+        }))
         this.count = res.count
       })
     }
