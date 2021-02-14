@@ -10,12 +10,12 @@
       Харків: "48246409"
     },
     category: {
-        icon: "food-apple",
-        name: "Фрукти",
-        novus: "fruits",
-        auchan: "fruits-auchan",
-        eko: "fruits-ekomarket",
-        silpo: "381"
+      name: "Овочі",
+      novus: "vegetables",
+      auchan: "vegetables-auchan",
+      eko: "vegetables-ekomarket",
+      silpo: "378",
+      icon: "🥔"
     },
     sort: 'price_asc'
   })
