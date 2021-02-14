@@ -5,14 +5,14 @@
 
     <div v-if="!$fetchState.pending" class="is-hidden-desktop px-4">
         
-        <nav class="level is-mobile mt-5 mx-2">
+        <nav class="level is-mobile mt-5 mb-4 mx-2">
 
-          <div class="level-left">
+          <div class="level-left mt-4">
             <p class="has-text-weight-medium">{{count}} товарів</p>
           </div>
 
-          <div class="level-right">
-            <div class="level-item"> <b-icon icon="tune"></b-icon> </div>
+          <div class="level-right mt-4">
+            <div @click="modal = true" class="level-item">⚙️</div>
           </div>
 
         </nav>
@@ -29,6 +29,54 @@
 
     </div>
 
+    <b-modal class="is-hidden-desktop" :active="modal" full-screen :can-cancel="false">
+        <div class="card" style="overflow: scroll;">
+          <div class="card-content">
+
+              <div class="media">
+                  <div class="media-content">
+                    <p class="has-text-centered is-size-5 ml-5 mb-1">Оберіть фільтри</p>
+                  </div>
+                  <div class="media-right mt-1 is-clickable">
+                      <span @click="modal = false">❌</span>
+                  </div>
+              </div>
+
+              <div class="content">
+                  <p class="is-size-5 has-text-success has-text-weight-medium mb-2">Магазин</p>
+
+                    <b-radio v-if="store[city.data]" 
+                      v-for="(store,i) in stores" :key="store.i" 
+                      v-model="storeSelect" 
+                      :native-value="store" 
+                      class="mb-2 is-flex" 
+                      style="width:180px"
+                      type="is-success"
+                    >
+                      <figure class="image is-16x16 mx-2 ">
+                        <img :src="store.img">
+                      </figure>
+                      <span class="has-text-weight-medium" >{{store.name}}</span>
+                    </b-radio>
+
+                  <p class="is-size-5 has-text-success has-text-weight-medium mb-2">Товари</p>
+
+                    <b-radio v-model="categorySelect"
+                      v-for="(category,i) in categories" :key="category.i" 
+                      :native-value="category" 
+                      class="mb-2 is-flex" 
+                      style="width:200px"
+                      type="is-success"
+                    >
+                      <span class="mx-2">{{category.icon}}</span>
+                      <span class="has-text-weight-medium" style="white-space:pre">{{category.name}}</span>
+                    </b-radio>
+
+              </div>
+          </div>
+      </div>
+    </b-modal>
+
     <div class="columns is-hidden-touch">
 
       <div class="column is-2">
@@ -37,16 +85,16 @@
 
             <p class="is-size-5 has-text-success has-text-weight-medium">Магазин</p>
 
-              <div class="mt-2 ml-1">
+            <div class="mt-2 ml-1">
 
-                <b-radio v-if="store[city.data]" v-model="storeSelect" :native-value="store" class="mb-2" type="is-success" v-for="(store,i) in stores" :key="store.i">
-                    <figure class="image is-16x16 mx-2">
-                      <img :src="store.img">
-                    </figure>
-                    <span class="has-text-weight-medium" style="white-space:pre">{{store.name}}</span>
-                </b-radio>
+              <b-radio v-if="store[city.data]" v-model="storeSelect" :native-value="store" class="mb-2" type="is-success" v-for="(store,i) in stores" :key="store.i">
+                  <figure class="image is-16x16 mx-2">
+                    <img :src="store.img">
+                  </figure>
+                  <span class="has-text-weight-medium" style="white-space:pre">{{store.name}}</span>
+              </b-radio>
 
-              </div>
+            </div>
 
           </div>
 
@@ -57,11 +105,8 @@
               <div class="mt-2 ml-1">
 
                 <b-radio v-model="categorySelect" :native-value="category" class="mb-2 is-flex" type="is-success" v-for="(category,i) in categories" :key="category.i">
-
                   <span class="mx-2">{{category.icon}}</span>
-
                   <span class="has-text-weight-medium" style="white-space:pre">{{category.name}}</span>
-
                 </b-radio>
 
               </div>
@@ -198,6 +243,7 @@ export default {
         data: this.$cookies.get("city")
       },
       count: null,
+      modal: false,
       page: Number(this.$route.params.id),
       storeSelect: this.$store.state.store,
       categorySelect: this.$store.state.category,
