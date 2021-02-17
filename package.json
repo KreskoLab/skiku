@@ -9,7 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxt/image": "^0.3.0",
+    "@nuxt/image": "^0.4.1",
     "@nuxtjs/axios": "^5.12.4",
     "@nuxtjs/proxy": "^2.1.0",
     "buefy": "^0.9.4",
