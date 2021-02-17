@@ -15,15 +15,15 @@
 
       <b-navbar-item tag="div" style="margin-right:-10px;margin-left:auto" class="is-hidden-desktop">
 
-        <b-dropdown v-model="city.data" aria-role="list" :mobile-modal="false" position="is-bottom-left"> 
+        <b-dropdown v-model="city" aria-role="list" :mobile-modal="false" position="is-bottom-left"> 
 
           <div class="navbar-item" slot="trigger" role="button">
-            <span v-if="city.data == null"><span class="is-size-5">🏡</span> Місто</span>
-            <span v-else><span class="is-size-5">🏡</span> {{city.data}}</span>
+            <span v-if="city == null"><span class="is-size-5">🏡</span> Місто</span>
+            <span v-else><span class="is-size-5">🏡</span> {{city}}</span>
           </div>
 
-          <b-dropdown-item :focusable="false" :value="city2" v-for="city2 in cities" :key="city2">
-            {{city2}}
+          <b-dropdown-item :focusable="false" :value="item" v-for="item in cities" :key="item">
+            {{item}}
           </b-dropdown-item>
 
         </b-dropdown>
@@ -34,15 +34,15 @@
   </template>
 
   <template slot="end">
-      <b-dropdown class="is-hidden-touch pr-2" v-model="city.data" aria-role="list" position="is-bottom-left"> 
+      <b-dropdown class="is-hidden-touch pr-2" v-model="city" aria-role="list" position="is-bottom-left"> 
 
           <div class="navbar-item" slot="trigger" role="button" style="cursor:pointer">
-            <span v-if="city.data == null"><span class="is-size-5">🏡</span> Місто</span>
-            <span v-else><span class="is-size-5">🏡</span> {{city.data}}</span>
+            <span v-if="city== null"><span class="is-size-5">🏡</span> Місто</span>
+            <span v-else><span class="is-size-5">🏡</span> {{city}}</span>
           </div>
 
-          <b-dropdown-item :focusable="false" :value="city2" v-for="city2 in cities" :key="city2">
-            {{city2}}
+          <b-dropdown-item :focusable="false" :value="item" v-for="item in cities" :key="item">
+            {{item}}
           </b-dropdown-item>
 
       </b-dropdown>
@@ -57,7 +57,20 @@
 
 <script>
 export default {
-  props: ['cities', 'city']
+  data(){
+    return{
+      cities: ['Київ', 'Львів', 'Дніпро', 'Одеса', 'Харків'],
+      city: this.$store.getters.getCity
+    }
+  },
+  created(){
+    this.$store.dispatch('check')
+  },
+  watch: {
+    city(val){
+      this.$store.commit('updateCity', val)
+    }
+  }
 }
 
 </script>
