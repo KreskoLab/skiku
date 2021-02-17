@@ -9,14 +9,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxt/image": "^0.4.1",
+    "@nuxt/image": "^0.3.0",
     "@nuxtjs/axios": "^5.12.4",
     "@nuxtjs/proxy": "^2.1.0",
     "buefy": "^0.9.4",
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.6.5",
     "fibers": "^5.0.0",
-    "nuxt": "^2.14.6",
+    "nuxt": "^2.15.0",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0"
   }

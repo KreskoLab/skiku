@@ -19,7 +19,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/buefy.js'
+    {src: '@/plugins/buefy.js'}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -27,14 +27,13 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    
+    '@nuxt/image'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
-    '@nuxt/image',
     'cookie-universal-nuxt'
   ],
 
