@@ -1,7 +1,7 @@
 <template>
   <div>
    
-    <Navbar :cities="cities" :city="city" />
+    <Navbar />
 
     <div v-if="!$fetchState.pending" class="is-hidden-desktop px-4">
         
@@ -45,7 +45,7 @@
               <div class="content">
                   <p class="is-size-5 has-text-success has-text-weight-medium mb-2">Магазин</p>
 
-                    <b-radio v-if="store[city.data]" 
+                    <b-radio v-if="store[city]" 
                       v-for="(store,i) in stores" :key="store.i" 
                       v-model="storeSelect" 
                       :native-value="store" 
@@ -87,7 +87,7 @@
 
             <div class="mt-2 ml-1">
 
-              <b-radio v-if="store[city.data]" v-model="storeSelect" :native-value="store" class="mb-2" type="is-success" v-for="(store,i) in stores" :key="store.i">
+              <b-radio v-if="store[city]" v-model="storeSelect" :native-value="store" class="mb-2" type="is-success" v-for="(store,i) in stores" :key="store.i">
                   <figure class="image is-16x16 mx-2">
                     <img :src="store.img">
                   </figure>
@@ -151,7 +151,7 @@ export default {
   
   async fetch(){
 
-    var storeID = this.storeSelect[this.city.data] // Город
+    var storeID = this.storeSelect[this.city] // Город
     var categoryID = this.categorySelect[this.storeSelect.code] // Категория
 
     var end = 30 * this.page
@@ -180,7 +180,6 @@ export default {
 
     }
     else{
-
       await this.$axios.$get(`zakaz/stores/${storeID}/categories/${categoryID}/products/?page=${this.page}&sort=${this.sort}`, {
         headers: {
           'Accept-Language': 'uk'
@@ -200,23 +199,18 @@ export default {
       })
     }
   },
-  created(){
-    if ( !this.$cookies.get("city") ){
-        this.$cookies.set("city", this.cities[0])
-        this.city.data = this.$cookies.get("city")
+  computed: {
+    sort(){
+      return this.$store.getters.getSort
+    },
+    city(){
+      return this.$store.getters.getCity
     }
   },
-  computed: {
-   sort(){
-     return this.$store.state.sort
-   }
-  },
   watch: {
-    'city.data'(val){
-      this.$cookies.set("city", val)
-      if ( !Object.keys(this.storeSelect).includes(this.city.data) ){
-        var newStore = this.stores.find(item => Object.keys(item).includes(this.city.data) ) 
-        this.storeSelect = newStore
+    city(){
+      if ( !Object.keys(this.storeSelect).includes(this.city) ){ 
+        this.storeSelect = this.stores.find(item => Object.keys(item).includes(this.city) )
       }
       this.$fetch()
     },
@@ -238,15 +232,11 @@ export default {
   data() {
     return{
       goods: [],
-      cities: ['Київ', 'Львів', 'Дніпро', 'Одеса', 'Харків'],
-      city: {
-        data: this.$cookies.get("city")
-      },
       count: null,
       modal: false,
       page: Number(this.$route.params.id),
-      storeSelect: this.$store.state.store,
-      categorySelect: this.$store.state.category,
+      storeSelect: this.$store.getters.getStore,
+      categorySelect: this.$store.getters.getCategory,
       stores: storesJson,
       categories: categoriesJson
     }
