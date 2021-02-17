@@ -17,7 +17,8 @@
       silpo: "378",
       icon: "🥔"
     },
-    sort: 'price_asc'
+    sort: 'price_asc',
+    city: 'Київ'
   })
   
   export const mutations = {
@@ -45,6 +46,21 @@
         }
       }
       state.sort = newSort
+    },
+    updateCity(state, city){
+      this.$cookies.set('city', city)
+      state.city = city
+    }
+  }
+
+  export const actions = {
+    check ({ commit, state }) {
+      if( !this.$cookies.get('city') ){
+        commit('updateCity', state.city)
+      }
+      else{
+        commit('updateCity', this.$cookies.get('city'))
+      }
     }
   }
 
@@ -57,5 +73,8 @@
     },
     getSort: (state) => {
       return state.sort
+    },
+    getCity: (state) => {
+      return state.city
     }
   }
