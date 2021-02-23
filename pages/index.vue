@@ -21,7 +21,7 @@
 
       </transition>
 
-      <b-button class="mt-6" rounded tag="nuxt-link" to="/explore/1" type="is-success" size="is-medium">
+      <b-button class="mt-6" rounded tag="nuxt-link" to="/explore?page=1" type="is-success" size="is-medium">
         Перейти
       </b-button>
 

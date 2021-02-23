@@ -2,8 +2,8 @@
     store: {
       name: "Ашан",
       code: "auchan",
-      img: "/images/auchanMini.png",
-      Київ: "48246401",
+      img: "/images/auchan.png",
+      Київ: "48246414",
       Львів: "48246409",
       Дніпро: "48246409",
       Одеса: "48246409",
@@ -14,8 +14,10 @@
       novus: "vegetables",
       auchan: "vegetables-auchan",
       eko: "vegetables-ekomarket",
+      metro: "vegetables-metro",
+      varus: "vegetables-varus",
       silpo: "378",
-      icon: "🥔"
+      icon: "corn"
     },
     sort: 'price_asc',
     city: 'Київ'

@@ -12,6 +12,9 @@ $family-primary: "e-Ukraine";
 //Card
 $card-radius: 0.45rem;
 
+//Modal
+$modal-background-background-color: bulmaRgba($scheme-invert, 0.40);
+
 // Set your colors
 $primary: #94C7A6;
 $primary-light: findLightColor($primary);
@@ -97,14 +100,17 @@ $input-focus-border-color: transparent;
 @import "~bulma/sass/base/_all.sass";
 @import "~bulma/sass/grid/columns.sass";
 @import "~bulma/sass/helpers/_all.sass";
+
 @import "~bulma/sass/layout/hero.sass";
 @import "~bulma/sass/layout/section.sass";
+
 @import "~bulma/sass/elements/button.sass";
 @import "~bulma/sass/elements/image.sass";
 @import "~bulma/sass/elements/tag.sass";
-@import "~bulma/sass/form/shared.sass";
-@import "~bulma/sass/form/input-textarea.sass";
-@import "~bulma/sass/form/checkbox-radio.sass";
+@import "~bulma/sass/elements/container.sass";
+
+@import "~bulma/sass/form/_all.sass";
+
 @import "~bulma/sass/components/navbar.sass";
 @import "~bulma/sass/components/dropdown.sass";
 @import "~bulma/sass/components/card.sass";
@@ -121,3 +127,4 @@ $input-focus-border-color: transparent;
 @import "~buefy/src/scss/components/_tag";
 @import "~buefy/src/scss/components/_radio";
 @import "~buefy/src/scss/components/_modal";
+@import "~buefy/src/scss/components/_loading";

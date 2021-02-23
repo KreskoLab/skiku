@@ -6,23 +6,35 @@
         :page="props.page"
         :id="`page${props.page.number}`"
         tag="nuxt-link"
-        :to="`/explore/${props.page.number}`">
+        :to="`/explore?page=${props.page.number}`">
         {{ (props.page.number) }}
     </b-pagination-button>
 
-    <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="nuxt-link" :to="`/explore/${props.page.number}`">
+    <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="nuxt-link" :to="`/explore?page=${props.page.number}`">
       <-
     </b-pagination-button>
 
-    <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="nuxt-link" :to="`/explore/${props.page.number}`">
+    <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="nuxt-link" :to="`/explore?page=${props.page.number}`">
       ->
-    </b-pagination-button>            
+    </b-pagination-button>     
+
 </b-pagination>   
 </template>
 
 <script>
 export default {
-  props: ['count', 'page']
+  props: ['count'],
+  computed:{
+    page(){
+      if (!this.$route.query.page){
+        this.$route.query.page = 1
+        return 1
+      }
+      else{
+        return Number(this.$route.query.page)
+      }
+    }
+  }
 }
 
 </script>
