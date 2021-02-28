@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Navbar v-if="$route.name == 'explore' || $route.name == 'explore-id'" />
     <Nuxt/>
   </div>
 </template>

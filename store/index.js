@@ -19,7 +19,10 @@
       silpo: "378",
       icon: "corn"
     },
-    sort: 'price_asc',
+    sort: {
+      name: "популярні",
+      code: "popularity_desc"
+    },
     city: 'Київ'
   })
   
@@ -32,22 +35,19 @@
     },
     updateSort(state, newSort) {
       if(state.store.name == 'Сільпо'){
-        if(newSort == 'price_asc'){
-          newSort = 'price-asc'
+        if(newSort.code == 'popularity_desc'){
+          newSort.code = 'popular-asc'
         }
-        else if(newSort == 'price_desc'){
-          newSort = 'price-desc'
-        }
+        newSort.code = newSort.code.replace('_','-')
+        state.sort = newSort
       }
       else{
-        if(newSort == 'price-asc'){
-          newSort = 'price_asc'
+        if(newSort.code == 'popular-asc'){
+          newSort.code = 'popularity_desc'
         }
-        else if(newSort == 'price-desc'){
-          newSort = 'price_desc'
-        }
+        newSort.code = newSort.code.replace('-','_')
+        state.sort = newSort
       }
-      state.sort = newSort
     },
     updateCity(state, city){
       this.$cookies.set('city', city)
