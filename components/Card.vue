@@ -3,7 +3,7 @@
   <div class="card px-6">
 
     <div class="card-image has-text-centered">
-      <nuxt-picture :src="good.img" width="350" height="350" />
+      <nuxt-picture :src="good.img" format="webp" width="350" height="350" />
     </div>
 
     <div class="media mb-0">
@@ -23,7 +23,7 @@
         </span>
     
         <span v-else class="tag is-success is-light">
-          <span class="is-size-5"><грн> {{good.price}}</span>
+          <span class="is-size-5"><грн>{{good.price}}</span>
         </span>
 
       </div>

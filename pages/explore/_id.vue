@@ -7,15 +7,15 @@
         <b-loading :active="true" />
       </div>
 
-      <div v-else class="column is-offset-one-fifth is-three-fifths notification is-white">
+      <div v-else class="column is-offset-one-fifth is-three-fifths notification is-white p-5">
 
         <p class="is-size-4 has-text-dark has-text-centered mb-2">{{good.title}}</p>
 
         <div class="has-text-centered">
-          <nuxt-picture loading="lazy" :src="good.img" width="300" height="300" />
+          <nuxt-picture :src="good.img" format="webp" width="300" height="300" />
         </div>
         
-        <div class="mb-4 mx-2" v-if="good.country || good.producer">
+        <div v-if="good.country || good.producer">
 
           <b-icon icon="information-outline" />
           <span class="is-size-4 has-text-dark">Інформація</span>
@@ -48,7 +48,7 @@
 
         </div>
 
-        <div class="mb-4 mx-2">
+        <div>
 
           <b-icon class="mt-3" icon="tag-outline" />
           <span class="is-size-4 has-text-dark">Ціни</span>
