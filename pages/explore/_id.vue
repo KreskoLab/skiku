@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="section pt-0 pb-6">
 
     <div class="columns mt-5">
 
@@ -20,27 +20,27 @@
           <b-icon icon="information-outline" />
           <span class="is-size-4 has-text-dark">Інформація</span>
 
-          <nav class="level is-mobile is-size-5 notification is-text is-light p-3 mb-2 mt-3" v-if="good.country">  
+          <nav class="level is-mobile is-size-5 notification is-light p-3 mb-2 mt-3" v-if="good.country">  
             <div class="level-left">
-              <p class="level-item">
+              <p class="level-item has-text-dark">
                 Країна
               </p>
             </div>
             <div class="level-right">
-              <p class="level-item">
+              <p class="level-item has-text-dark">
                 {{good.country}}
               </p>
             </div>
           </nav>
 
-          <nav class="level is-mobile is-size-5 notification is-text is-light p-3 mb-2 mt-3" v-if="good.producer">  
+          <nav class="level is-mobile is-size-5 notification is-light p-3 mb-2 mt-3" v-if="good.producer">  
             <div class="level-left">
-              <p class="level-item">
+              <p class="level-item has-text-dark">
                 ТМ
               </p>
             </div>
             <div class="level-right">
-              <p class="level-item">
+              <p class="level-item has-text-dark">
                 {{good.producer}}
               </p>
             </div>
@@ -54,9 +54,9 @@
           <span class="is-size-4 has-text-dark">Ціни</span>
 
           <div class="mt-3">
-            <nav class="level is-mobile is-size-5 notification is-text is-light p-3 mb-3" v-for="(item,i) in pricesSort" :key="item.i">
+            <nav class="level is-mobile is-size-5 notification is-light p-3 mb-3" v-for="(item,i) in pricesSort" :key="item.i">
               <div class="level-left">
-                <div class="level-item">
+                <div class="level-item has-text-dark">
                   <figure class="image is-24x24 mr-2">
                     <img :src="item.img">
                   </figure>
@@ -73,12 +73,10 @@
 
         </div>
 
-        </div>
-
       </div>
 
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -92,16 +90,24 @@ export default {
     return{
       good: {},
       prices: [],
-      store: this.$store.getters.getStore,
-      city: this.$store.getters.getCity
+      store: this.$store.getters.getStore
     }
   },
   computed: {
+    city(){
+      return this.$store.getters.getCity
+    },
     pricesSort(){
       return this.prices.sort((a,b) => a.price - b.price)
     },
     stores(){
       return storesJSON.filter(store => store.name !== 'Сільпо')
+    }
+  },
+  watch: {
+    city(){
+      this.prices = []
+      this.$fetch()
     }
   },
   methods:{
@@ -116,6 +122,7 @@ export default {
         .then((res) => {
 
             var newCountry
+
             if(res.country){
               newCountry = res.country[0].toUpperCase() + res.country.slice(1)
             }
@@ -148,7 +155,3 @@ export default {
 }
 
 </script>
-
-<style>
-
-</style>

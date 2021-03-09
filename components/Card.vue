@@ -8,7 +8,7 @@
 
     <div class="media mb-0">
       <div class="media-content has-text-centered">
-        <p>{{good.title}}</p>
+        <p class="has-text-dark">{{good.title}}</p>
       </div>
     </div>
 
@@ -18,12 +18,12 @@
 
         <span v-if="good.priceStopAfter" class="tag is-danger is-light">
           <span class="is-size-5">
-            <грн>{{good.price}}<span class="is-size-6"> до {{ good.priceStopAfter }} </span> 
+            <грн> {{good.price}}<span class="is-size-6"> до {{ good.priceStopAfter }} </span> 
           </span>
         </span>
     
         <span v-else class="tag is-success is-light">
-          <span class="is-size-5"><грн>{{good.price}}</span>
+          <span class="is-size-5"><грн> {{good.price}}</span>
         </span>
 
       </div>
@@ -40,7 +40,3 @@ export default {
 }
 
 </script>
-
-<style>
-
-</style>

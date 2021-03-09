@@ -1,15 +1,15 @@
 <template>
-  <div class="mt-5">
+  <div>
 
-    <div v-if="$fetchState.pending && !modal">
+    <div v-if="$fetchState.pending">
       <b-loading :active="true" />
     </div>
 
-    <div class="container is-fullhd mx-4" v-if="!$fetchState.pending">
+    <section class="section pb-0" v-if="!$fetchState.pending">
 
-      <div class="columns is-multiline">
+      <div class="columns">
 
-        <div class="column is-4-tablet is-3-desktop p-5">
+        <div class="column is-3-desktop">
 
           <Sidebar class="sidebar is-hidden-mobile" 
             @newStore="storeSelect = $event" 
@@ -29,7 +29,7 @@
                 />
             </template>
 
-            <Sidebar class="sidebar" 
+            <Sidebar 
               @newStore="storeSelect = $event" 
               @newCategory="categorySelect = $event" 
               :categories="categories" 
@@ -41,9 +41,9 @@
 
         </div>
 
-        <div class="column is-8-tablet is-9-desktop">
+        <div class="column is-9-desktop is-8-tablet">
 
-          <div class="columns is-multiline is-mobile">
+          <div class="columns is-multiline">
 
             <div class="column is-12">
               <Level :total="count" />
@@ -54,7 +54,7 @@
               <Card v-if="storeSelect.name == 'Сільпо'" :good="good" :store="storeSelect" />
 
               <NuxtLink v-else :to="`explore/${good.ean}`">
-                <Card id="good" class="" :good="good" :store="storeSelect" />
+                <Card id="good" :good="good" :store="storeSelect" />
               </NuxtLink>
 
             </div>
@@ -69,7 +69,7 @@
 
       </div>
 
-    </div>
+    </section>
 
   </div>
 </template>
@@ -127,7 +127,6 @@ export default {
             img: item.img.s350x350,
             price: item.price.toString().substring(0, item.price.toString().length - 2) + '.' + item.price.toString().slice(-2),
             priceStopAfter: item.discount.due_date ? item.discount.due_date.toString().substr(8, 4) +'.'+ item.discount.due_date.substr(5, 2) : item.discount.due_date
-
           }))
           this.count = res.count
         })
@@ -154,17 +153,7 @@ export default {
       this.$fetch()
     },
     $route(to, from) {
-      if (to.params.id == undefined && from.params.id == undefined)
-      {
-        this.$fetch()
-      }
-      else if(from.params.id){
-        this.$router.push({ name: 'explore-id', query: { page: Number(this.$route.query.page) } })
-        if(!this.count){
-          this.$fetch()
-        }
-
-      }
+      this.$fetch()
     },
     storeSelect(store){
       this.$store.commit('updateStore', store)
@@ -180,6 +169,7 @@ export default {
     },
     categorySelect(category){
       this.$store.commit('updateCategory', category)
+
       if(this.$route.query.page == 1){
         this.$fetch()
       }
@@ -193,7 +183,6 @@ export default {
     return{
       goods: [],
       count: null,
-      modal: false,
       open: false,
       storeSelect: this.$store.getters.getStore,
       categorySelect: this.$store.getters.getCategory,
@@ -207,9 +196,6 @@ export default {
 </script>
 
 <style>
-.dropdown-content{font-size:.875rem;padding-bottom:.5rem;padding-top:.5rem;border:1px solid #dbdbdb;border-radius:6px}
-.dropdown-menu{min-width:110px!important;transition-duration:86ms;transition-property:opacity,transform}
-.dropdown-item{padding:.375rem 1rem;padding-right:3rem;white-space:nowrap}
 span.icon.is-left{margin:16px}span.control-label{display:contents}
 .card{height:100%}
 
